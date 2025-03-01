@@ -1,7 +1,3 @@
-import {
-  PasswordComplexityInputProps,
-  PasswordComplexityReturnsProps,
-} from "feats/checkers/passwordValidator";
 import { emailIsValid, validatePassword } from "./feats/checkers";
 import { generateDeviceDataLogger, hostResolver, ipTracker } from "./feats/loggers";
 import {
@@ -15,6 +11,27 @@ import {
 } from "./feats/otp/index";
 import { fieldsHide, sanitizeSQLInjection, sanitizeXSSInjection } from "./feats/sanitization";
 
+export type PasswordComplexityValidation = {
+  minChars: number;
+  maxChars: number;
+  minLetters?: number;
+  minUpperCase?: number;
+  minSymbols?: number;
+  minNumbers?: number;
+  maxConsecutiveChars?: number;
+  avoidCommonPasswords?: boolean;
+};
+
+export type PasswordComplexityInputProps = {
+  password: string;
+  validation?: PasswordComplexityValidation;
+}
+
+export type PasswordComplexityReturnsProps = {
+  isValid: boolean;
+  strength?: "weak" | "medium" | "strong";
+  message: string;
+}
 class SecurityToolKit {
   /**
    * @property totpMethods

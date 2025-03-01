@@ -20,12 +20,12 @@ export type PasswordComplexityValidation = {
   avoidCommonPasswords?: boolean;
 };
 
-export interface PasswordComplexityInputProps {
+export type PasswordComplexityInputProps = {
   password: string;
   validation?: PasswordComplexityValidation;
 }
 
-export interface PasswordComplexityReturnsProps {
+export type PasswordComplexityReturnsProps = {
   isValid: boolean;
   strength?: "weak" | "medium" | "strong";
   message: string;
